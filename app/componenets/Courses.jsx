@@ -1,16 +1,16 @@
 import Link from "next/link";
-async function fetchCourses() {
-  const response = await fetch("http://localhost:3000/api/courses", {
-    next: {
-      revalidate: 60,
-    },
-  });
-  await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait 1 second
-  const courses = await response.json();
-  return courses;
-}
-const Courses = async () => {
-  const courses = await fetchCourses();
+// async function fetchCourses() {
+//   const response = await fetch("http://localhost:3000/api/courses", {
+//     next: {
+//       revalidate: 60,
+//     },
+//   });
+//   await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait 1 second
+//   const courses = await response.json();
+//   return courses;
+// }
+const Courses = async ({courses}) => {
+//   const courses = await fetchCourses();
 
   return (
     <div className="courses">

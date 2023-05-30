@@ -2,7 +2,12 @@ import Link from "next/link";
 async function fetchRepoContents(name) {
   await new Promise((resolve) => setTimeout(resolve, 3000)); // Wait 1 second
   const response = await fetch(
-    `https://api.github.com/repos/nomandhoni-cs/${name}/contents`
+    `https://api.github.com/repos/nomandhoni-cs/${name}/contents`,
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
   );
   // await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait 1 second
   const contents = await response.json();
